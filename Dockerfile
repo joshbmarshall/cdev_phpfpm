@@ -14,8 +14,7 @@ RUN mkdir -p /var/www/cms && \
     su php -c 'git config --global user.name "Development Environment"' && \
     chown -R php.php /home/php && \
     mkdir /tmpdir && \
-    chmod 777 /tmpdir && \
-
+    chmod 777 /tmpdir
 
 # Install ffmpeg
 RUN apk add --update ffmpeg && \
