@@ -8,21 +8,19 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
     && rm -fr /t
 
-RUN mkdir -p /var/www/cms
-
+RUN mkdir -p /var/www/cms && \
 # Default git user
+    su php -c 'git config --global user.email "dev@jm1.me"' && \
+    su php -c 'git config --global user.name "Development Environment"' && \
+    chown -R php.php /home/php && \
+    mkdir /tmpdir && \
+    chmod 777 /tmpdir && \
 
-RUN su php -c 'git config --global user.email "dev@jm1.me"'
-RUN su php -c 'git config --global user.name "Development Environment"'
 
 # Install ffmpeg
 RUN apk add --update ffmpeg && \
     rm -rf /tmp/* && \
     rm -rf /var/cache/apk/*
-
-RUN chown -R php.php /home/php
-RUN mkdir /tmpdir
-RUN chmod 777 /tmpdir
 
 # Install ssmtp to send email to mailhog
 RUN apk add --update ssmtp && \
