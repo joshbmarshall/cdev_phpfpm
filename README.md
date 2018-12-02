@@ -23,3 +23,7 @@ PHP FPM for development
       - ~/.ssh/id_rsa:/home/php/.ssh/id_rsa
       - ~/.ssh/known_hosts:/home/php/.ssh/known_hosts
 ```
+
+To build:
+	docker build --cpu-period 50000 --cpu-quota=25000 -t joshbmarshall/cdev_phpfpm7 .
+
