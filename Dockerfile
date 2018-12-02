@@ -26,7 +26,4 @@ RUN apk add --update ssmtp && \
     rm -rf /tmp/* && \
     rm -rf /var/cache/apk/*
 
-# Upgrade ca certificates
-RUN /usr/sbin/update-ca-certificates
-
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
