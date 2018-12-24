@@ -27,3 +27,17 @@ RUN apk add --update ssmtp && \
     rm -rf /var/cache/apk/*
 
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
+
+# Install php-ast
+RUN apk add --update autoconf build-base \
+   && pecl install ast \
+   && printf "extension=ast.so\n" > $PHP_INI_DIR/conf.d/ast.ini \
+   && apk del autoconf build-base \
+   && rm -rf /tmp/* \
+   && rm -rf /var/cache/apk/*
+
+RUN su php -c "/usr/local/bin/composer global require hirak/prestissimo"
+
+RUN su php -c "/usr/local/bin/composer global require phan/phan"
+
+
