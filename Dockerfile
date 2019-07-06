@@ -40,4 +40,6 @@ RUN su php -c "/usr/local/bin/composer global require hirak/prestissimo"
 RUN su php -c "/usr/local/bin/composer global require phan/phan"
 RUN su php -c "/usr/local/bin/composer global require overtrue/phplint"
 
-
+RUN apk add --update jpegoptim optipng pngquant gifsicle \
+ && rm -rf /tmp/* \
+ && rm -rf /var/cache/apk/*
