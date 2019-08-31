@@ -46,3 +46,7 @@ RUN apk add --update jpegoptim optipng pngquant gifsicle \
 
 RUN npm install -g typescript
 RUN npm install -g eslint
+
+RUN apk add ghostscript \
+   && rm -rf /tmp/* \
+   && rm -rf /var/cache/apk/*
