@@ -25,5 +25,5 @@ PHP FPM for development
 ```
 
 To build:
-	docker build --cpu-period 50000 --cpu-quota=25000 -t joshbmarshall/cdev_phpfpm7 .
+	docker build -t joshbmarshall/cdev_phpfpm7 .
 
