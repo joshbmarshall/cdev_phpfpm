@@ -46,6 +46,11 @@ RUN apk add --update jpegoptim optipng pngquant gifsicle \
 
 RUN npm install -g typescript
 RUN npm install -g eslint
+RUN npm install -g prettier @prettier/plugin-php
+RUN npm install -g @starptech/prettyhtml @starptech/prettyhtml-formatter
+RUN curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o /usr/bin/php-cs-fixer \
+ && chmod a+x /usr/bin/php-cs-fixer
+RUN npm install -g @vue/cli
 
 RUN apk add ghostscript \
    && rm -rf /tmp/* \
